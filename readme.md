@@ -4,9 +4,7 @@
 
 - `develop` 브랜치를 `origin/release`로 덮기 위해 다음 작업 수행:
 
-```bash
-bash
-복사편집
+```shell
 git checkout develop
 git reset --hard origin/release
 git push origin develop --force
@@ -14,9 +12,7 @@ git push origin develop --force
 
 - 이후, 다른 사용자들이 `git fetch origin` 또는 `git fetch origin +develop` 실행 시 다음 오류 발생:
 
-```
-bash
-복사편집
+```shell
 ! [rejected]        develop -> origin/develop (non-fast-forward)
 ```
 
@@ -34,9 +30,7 @@ bash
 
 ### 1. 최신 원격 커밋 ID 조회
 
-```bash
-bash
-복사편집
+```shell
 git ls-remote origin refs/heads/develop
 ```
 
@@ -48,9 +42,7 @@ git ls-remote origin refs/heads/develop
 
 ### 2. `origin/develop` 참조 강제로 덮어쓰기
 
-```bash
-bash
-복사편집
+```shell
 git update-ref refs/remotes/origin/develop abc1234abcdef1234567890abcdef1234567890
 ```
 
@@ -59,18 +51,14 @@ git update-ref refs/remotes/origin/develop abc1234abcdef1234567890abcdef12345678
 
 ### 3. 로컬 브랜치 초기화
 
-```bash
-bash
-복사편집
+```shell
 git checkout develop
 git reset --hard origin/develop
 ```
 
 ---
 # ✅ 요약 명령어 스크립트
-```bash
-bash
-복사편집
+```shell
 # 1. 원격 커밋 해시 확인
 git ls-remote origin refs/heads/develop
 
@@ -89,9 +77,7 @@ git reset --hard origin/develop
 > 아래 순서로 로컬 브랜치를 재설정해 주세요:
 > 
 
-```bash
-bash
-복사편집
+```shell
 git fetch origin
 git checkout develop
 git reset --hard origin/develop
